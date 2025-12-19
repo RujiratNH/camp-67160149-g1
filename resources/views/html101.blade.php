@@ -1,4 +1,5 @@
 @extends('template.default')
+
 @section('title','Workshop FORM')
 @section('header','File Default')
 
@@ -6,8 +7,11 @@
 <h1>Workshop #HTML - FORM</h1>
 
 <form>
+    {{-- ชื่อ --}}
     <div class="row mt-3">
-        <div class="col-md-2"><label>ชื่อ</label></div>
+        <div class="col-sm-12 col-md-2">
+            <label for="fname">ชื่อ</label>
+        </div>
         <div class="col">
             <input id="fname" class="form-control">
             <div class="valid-feedback">ถูกต้อง</div>
@@ -15,8 +19,11 @@
         </div>
     </div>
 
+    {{-- สกุล --}}
     <div class="row mt-3">
-        <div class="col-md-2"><label>สกุล</label></div>
+        <div class="col-sm-12 col-md-2">
+            <label for="lname">สกุล</label>
+        </div>
         <div class="col">
             <input id="lname" class="form-control">
             <div class="valid-feedback">ถูกต้อง</div>
@@ -24,79 +31,140 @@
         </div>
     </div>
 
+    {{-- วันเกิด --}}
     <div class="row mt-3">
-        <div class="col-md-2"><label>วันเกิด</label></div>
+        <div class="col-sm-12 col-md-2">
+            <label for="birth">วัน/เดือน/ปีเกิด</label>
+        </div>
         <div class="col">
             <input type="date" id="birth" class="form-control">
-            <div class="invalid-feedback">โปรดระบุวันเกิด</div>
+            <div class="valid-feedback">ถูกต้อง</div>
+            <div class="invalid-feedback">โปรดระบุวันเดือนปีเกิด</div>
         </div>
     </div>
 
+    {{-- อายุ --}}
     <div class="row mt-3">
-        <div class="col-md-2"><label>อายุ</label></div>
+        <div class="col-sm-12 col-md-2">
+            <label for="age">อายุ</label>
+        </div>
         <div class="col">
             <input id="age" class="form-control">
+            <div class="valid-feedback">ถูกต้อง</div>
             <div class="invalid-feedback">โปรดระบุอายุ</div>
         </div>
     </div>
 
+    {{-- เพศ --}}
     <div class="row mt-3">
-        <div class="col-md-2"><label>เพศ</label></div>
+        <div class="col-sm-12 col-md-2">
+            <label>เพศ</label>
+        </div>
         <div class="col">
             <div class="form-check form-check-inline">
-                <input type="radio" name="gender" class="form-check-input">
-                <label class="form-check-label">ชาย</label>
+                <input type="radio" id="male" name="gender" class="form-check-input">
+                <label class="form-check-label" for="male">ชาย</label>
             </div>
             <div class="form-check form-check-inline">
-                <input type="radio" name="gender" class="form-check-input">
-                <label class="form-check-label">หญิง</label>
+                <input type="radio" id="female" name="gender" class="form-check-input">
+                <label class="form-check-label" for="female">หญิง</label>
             </div>
-            <div class="invalid-feedback d-block" id="genderError" style="display:none;">
+            <div class="invalid-feedback" id="genderError">
                 โปรดเลือกเพศ
             </div>
         </div>
     </div>
 
+    {{-- รูป --}}
     <div class="row mt-3">
-        <div class="col-md-2"><label>แนวเพลง</label></div>
+        <div class="col-sm-12 col-md-2">
+            <label for="photo">รูป</label>
+        </div>
+        <div class="col">
+            <input type="file" id="photo" class="form-control">
+            <div class="valid-feedback">ถูกต้อง</div>
+            <div class="invalid-feedback">โปรดอัปโหลดรูป</div>
+        </div>
+    </div>
+
+    {{-- ที่อยู่ --}}
+    <div class="row mt-3">
+        <div class="col-sm-12 col-md-2">
+            <label for="address">ที่อยู่</label>
+        </div>
+        <div class="col">
+            <textarea id="address" class="form-control" rows="3"></textarea>
+            <div class="valid-feedback">ถูกต้อง</div>
+            <div class="invalid-feedback">โปรดระบุที่อยู่</div>
+        </div>
+    </div>
+
+    {{-- สีที่ชอบ --}}
+    <div class="row mt-3">
+        <div class="col-sm-12 col-md-2">
+            <label for="color">สีที่ชอบ</label>
+        </div>
+        <div class="col">
+            <select id="color" class="form-control" style="width:130px;">
+                <option value="">-- เลือกสี --</option>
+                <option>สีแดง</option>
+                <option>สีน้ำเงิน</option>
+                <option>สีเขียว</option>
+                <option>สีเหลือง</option>
+            </select>
+            <div class="valid-feedback">ถูกต้อง</div>
+            <div class="invalid-feedback">โปรดเลือกสีที่ชอบ</div>
+        </div>
+    </div>
+
+    {{-- แนวเพลง --}}
+    <div class="row mt-3">
+        <div class="col-sm-12 col-md-2">
+            <label>แนวเพลงที่ชอบ</label>
+        </div>
         <div class="col">
             <div class="form-check form-check-inline">
-                <input type="radio" name="music" class="form-check-input">
-                <label class="form-check-label">เพื่อชีวิต</label>
+                <input type="radio" id="m1" name="music" class="form-check-input">
+                <label class="form-check-label" for="m1">เพื่อชีวิต</label>
             </div>
             <div class="form-check form-check-inline">
-                <input type="radio" name="music" class="form-check-input">
-                <label class="form-check-label">ลูกทุ่ง</label>
+                <input type="radio" id="m2" name="music" class="form-check-input">
+                <label class="form-check-label" for="m2">ลูกทุ่ง</label>
             </div>
             <div class="form-check form-check-inline">
-                <input type="radio" name="music" class="form-check-input">
-                <label class="form-check-label">อื่นๆ</label>
+                <input type="radio" id="m3" name="music" class="form-check-input">
+                <label class="form-check-label" for="m3">อื่นๆ</label>
             </div>
-            <div class="invalid-feedback d-block" id="musicError" style="display:none;">
-                โปรดเลือกแนวเพลง
+            <div class="invalid-feedback" id="musicError">
+                โปรดเลือกแนวเพลงที่ชอบ
             </div>
         </div>
     </div>
 
+    {{-- ยินยอม --}}
     <div class="row mt-3">
-        <div class="col-md-2"></div>
-        <div class="col">
+        <div class="col-sm-12 col-md-2">
             <div class="form-check">
                 <input type="checkbox" id="agree" class="form-check-input">
-                <label class="form-check-label">ยินยอมให้เก็บข้อมูล</label>
-                <div class="invalid-feedback d-block" id="agreeError" style="display:none;">
+                <label class="form-check-label" for="agree">ยินยอมให้เก็บข้อมูล</label>
+                <div class="invalid-feedback" id="agreeError">
                     กรุณายินยอมให้เก็บข้อมูล
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row mt-4">
-        <div class="col-md-2">
-            <button type="button" class="btn btn-secondary btn-sm" onclick="resetForm()">Reset</button>
+    {{-- ปุ่ม --}}
+    <div class="row mt-3">
+        <div class="col-sm-12 col-md-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="resetForm()">
+                Reset
+            </button>
         </div>
         <div class="col">
-            <button type="button" class="btn btn-success btn-sm" onclick="submitForm()">Submit</button>
+            <button type="button" class="btn btn-sm btn-success" onclick="cilckMe()">
+                Submit
+            </button>
         </div>
     </div>
 </form>
@@ -104,48 +172,78 @@
 
 @push('scripts')
 <script>
-    let submitted = false
-
-    function checkInput(id) {
+    function validateField(id) {
         const el = document.getElementById(id)
-        if (!el.value.trim()) {
+
+        if (el.value.trim() === "") {
             el.classList.add('is-invalid')
+            el.classList.remove('is-valid')
             return false
         }
-        el.classList.remove('is-invalid')
+
         el.classList.add('is-valid')
+        el.classList.remove('is-invalid')
         return true
     }
 
-    function submitForm() {
-        submitted = true
+    function validateFile(id) {
+        const el = document.getElementById(id)
 
-        checkInput('fname')
-        checkInput('lname')
-        checkInput('birth')
-        checkInput('age')
+        if (el.files.length === 0) {
+            el.classList.add('is-invalid')
+            el.classList.remove('is-valid')
+            return false
+        }
 
-        document.getElementById('genderError').style.display =
-            document.querySelector('input[name="gender"]:checked') ? 'none' : 'block'
+        el.classList.add('is-valid')
+        el.classList.remove('is-invalid')
+        return true
+    }
 
-        document.getElementById('musicError').style.display =
-            document.querySelector('input[name="music"]:checked') ? 'none' : 'block'
+    function toggleError(id, condition) {
+        document.getElementById(id).style.display = condition ? 'none' : 'block'
+    }
 
-        document.getElementById('agreeError').style.display =
-            document.getElementById('agree').checked ? 'none' : 'block'
+    function cilckMe() {
+        validateField('fname')
+        validateField('lname')
+        validateField('birth')
+        validateField('age')
+        validateField('address')
+        validateField('color')
+
+        validateFile('photo')
+
+        toggleError('genderError', document.querySelector('input[name="gender"]:checked'))
+        toggleError('musicError', document.querySelector('input[name="music"]:checked'))
+        toggleError('agreeError', document.getElementById('agree').checked)
     }
 
     function resetForm() {
-        submitted = false
-        document.querySelector('form').reset()
+        const form = document.querySelector('form')
+        form.reset()
 
-        document.querySelectorAll('.is-valid,.is-invalid').forEach(el=>{
-            el.classList.remove('is-valid','is-invalid')
-        })
+        document.querySelectorAll('.is-valid, .is-invalid')
+            .forEach(el => el.classList.remove('is-valid', 'is-invalid'))
 
-        genderError.style.display = 'none'
-        musicError.style.display = 'none'
-        agreeError.style.display = 'none'
+        toggleError('genderError', true)
+        toggleError('musicError', true)
+        toggleError('agreeError', true)
     }
+
+    // ตัวอย่าง callback (เหมือนเดิม)
+    function myFunc(callback) {
+        callback("in CallBack")
+    }
+
+    function callMe(param) {
+        console.log(param)
+    }
+
+    myFunc(callMe)
+
+    let myval1 = 1
+    let myval2 = parseInt("1")
+    console.log(myval1 + myval2 + "\n\n\n\nทดสอบ")
 </script>
 @endpush
