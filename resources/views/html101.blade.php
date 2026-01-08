@@ -170,7 +170,7 @@
                 </button>
             </div>
             <div class="col">
-                <button type="submit" class="btn btn-sm btn-success">
+                <button type="submit" class="btn btn-sm btn-success" onclick="return cilckMe()">
                     Submit
                 </button>
             </div>
@@ -213,19 +213,32 @@
         }
 
         function cilckMe() {
-            validateField('fname')
-            validateField('lname')
-            validateField('birth')
-            validateField('age')
-            validateField('address')
-            validateField('color')
+             let valid = true
 
-            validateFile('photo')
+        valid &= validateField('fname')
+        valid &= validateField('lname')
+        valid &= validateField('birth')
+        valid &= validateField('age')
+        valid &= validateField('address')
+        valid &= validateField('color')
 
-            toggleError('genderError', document.querySelector('input[name="gender"]:checked'))
-            toggleError('musicError', document.querySelector('input[name="music"]:checked'))
-            toggleError('agreeError', document.getElementById('agree').checked)
-        }
+        valid &= validateFile('photo')
+
+        const genderChecked = document.querySelector('input[name="gender"]:checked')
+        toggleError('genderError', genderChecked)
+        if (!genderChecked) valid = false
+
+        const musicChecked = document.querySelector('input[name="music"]:checked')
+        toggleError('musicError', musicChecked)
+        if (!musicChecked) valid = false
+
+        const agreeChecked = document.getElementById('agree').checked
+        toggleError('agreeError', agreeChecked)
+        if (!agreeChecked) valid = false
+
+        // ❗ ถ้า false = submit ไม่ได้
+        return !!valid
+    }
 
         function resetForm() {
             const form = document.querySelector('form')
