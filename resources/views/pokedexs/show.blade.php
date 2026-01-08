@@ -1,8 +1,13 @@
 @extends('template.default')
+
 @section('content')
+
 <h1>{{ $pokedex->name }}</h1>
-@if($pokedex->image_url)
-    <img src="{{ $pokedex->image_url ?? 'https://via.placeholder.com/200' }}" width="200">
+
+@if ($pokedex->image_url != null)
+    <img src="{{ $pokedex->image_url }}" width="200">
+@else
+    <img src="https://via.placeholder.com/200" width="200">
 @endif
 
 <ul>
@@ -15,5 +20,6 @@
     <li>Defense : {{ $pokedex->defense }}</li>
 </ul>
 
-<a class="btn btn-secondary" href="{{ url('/pokedexs') }}">ย้อนกลับ</a>
+<a class="btn btn-secondary" href="/pokedexs">ย้อนกลับ</a>
+
 @endsection
